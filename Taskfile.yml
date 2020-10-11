@@ -13,6 +13,9 @@ tasks:
   mig:
     cmds:
       - pipenv run python manage.py migrate
+  db-createdb:
+    cmds:
+      - mysql -uroot -p'' -e "create database if not exists django_getting_started;"
 
   install:
     cmds:
