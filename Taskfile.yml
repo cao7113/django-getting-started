@@ -4,13 +4,17 @@ tasks:
 
   run:
     cmds:
-    # 0 is a shortcut for 0.0.0.0
-    - pipenv run python manage.py runserver 0:8000
+      # 0 is a shortcut for 0.0.0.0
+      - pipenv run python manage.py runserver 0:8000
 
   install:
     cmds:
       - pipenv install
 
+  init-polls:
+    cmds:
+      - python manage.py startapp polls
+      
   init-mysite:
     cmds:
       - pipenv run django-admin startproject mysite .
