@@ -2,13 +2,18 @@
 version: '2'
 tasks:
 
+  run:
+    cmds:
+    # 0 is a shortcut for 0.0.0.0
+    - pipenv run python manage.py runserver 0:8000
+
   install:
     cmds:
       - pipenv install
-      
-  init-project:
+
+  init-mysite:
     cmds:
-      - pipenv run django-admin startproject mysite
+      - pipenv run django-admin startproject mysite .
 
   init-install:
     desc: install Django and verify version
