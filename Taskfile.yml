@@ -1,0 +1,19 @@
+# https://taskfile.dev
+version: '2'
+tasks:
+
+  install:
+    cmds:
+      - pipenv install
+      
+  init-project:
+    cmds:
+      - pipenv run django-admin startproject mysite
+
+  init-install:
+    desc: install Django and verify version
+    cmds:
+    - pipenv install Django
+    - pipenv run python -c "import django; print(django.get_version())"
+    # Django 3.1, which supports Python 3.6 and later
+    - pipenv run python -m django --version
