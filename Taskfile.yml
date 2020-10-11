@@ -3,7 +3,9 @@ version: '2'
 tasks:
 
   run:
+    desc: start the development server and visit
     cmds:
+      - open http://localhost:8000/admin
       # 0 is a shortcut for 0.0.0.0
       - pipenv run python manage.py runserver 0:8000
   sh:
@@ -25,6 +27,12 @@ tasks:
     cmds:
       - mycli -uroot django_getting_started
       # or pipenv run ./manage.py dbshell
+
+  # admin
+  create-admin-user:
+    cmds:
+      # admin/admin admin@demo.local
+      - pipenv run python manage.py createsuperuser
 
   db-create:
     cmds:
