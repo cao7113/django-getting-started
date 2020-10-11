@@ -6,16 +6,29 @@ tasks:
     cmds:
       # 0 is a shortcut for 0.0.0.0
       - pipenv run python manage.py runserver 0:8000
-  py:
+  sh:
     cmds:
-      - pipenv run python
+      - pipenv run ./manage.py shell
+  psh:
+    cmds:
+      - pipenv shell
 
   mig:
     cmds:
       - pipenv run python manage.py migrate
-  db-createdb:
+
+  # polls app migration operations:
+  # python manage.py makemigrations polls
+  # python manage.py sqlmigrate polls 0001
+
+  sql:
     cmds:
-      - mysql -uroot -p'' -e "create database if not exists django_getting_started;"
+      - mycli -uroot django_getting_started
+      # or pipenv run ./manage.py dbshell
+
+  db-create:
+    cmds:
+      - mysql -uroot -p -e "create database if not exists django_getting_started;"
 
   install:
     cmds:
